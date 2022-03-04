@@ -1,12 +1,12 @@
-# CSE210-Template (CHANGE ME!!!)
+# CSE210-05
 
-BYUI CSE-210 Template Repo (CHANGE ME!!!)
+BYUI CSE-210-05
 
 ## How to use this project
 
 1. Fork the repository (using the GitHub 'fork' button on the repo page)
 
-2. Switch to the 'dev' branch. If you don't know how, Google is your friend [here](https://bfy.tw/SPc6)
+2. Switch to the branch with your name on it. If you don't know how, Google is your friend [here](https://bfy.tw/SPc6)
 
 3. Contribute your code.
 
