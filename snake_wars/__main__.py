@@ -1,11 +1,10 @@
+from snake_wars.directing.game_director import GameDirector
 
-from art import tprint, DEFAULT_FONT
+# This class is PURELY for stating the GameDirector class, initalizing it, and managing the bare necessities of the game.
+# NOTHING ELSE!!!
 class Game():
     def __init__(self):
-        pass
-    
-    def fancy_print_text(self, input_text):
-        tprint(text=input_text, font=DEFAULT_FONT)
+        self.game_manager = GameDirector()
     
 if __name__ == "__main__":
     game = Game()
