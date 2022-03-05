@@ -131,3 +131,7 @@ dmypy.json
 # VS Code Files
 *.code-workspace
 .vscode/
+logs/*
+
+# Visual Studio 2022 Files
+.vs/
