@@ -6,4 +6,9 @@ class Colors():
     pass # List all color options here.
 
 class Color():
-    pass
+    
+    def __init__(self, red, green, blue, alpha):
+        self._r = red
+        self._g = green
+        self._b = blue
+        self._a = alpha
