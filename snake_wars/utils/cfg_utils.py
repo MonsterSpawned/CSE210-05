@@ -23,7 +23,7 @@ class ConfigUtils():
             self.configuration.set("GAME", "game_name", "Snake Game")
             self.configuration.set("GAME", "window_width", 1080)
             self.configuration.set("GAME", "window_height", 720)
-            self.configuration.set("GAME", "game_fps", 60)
+            self.configuration.set("GAME", "game_fps", 15)
         
     def get_cfg(self):
         return self.configuration

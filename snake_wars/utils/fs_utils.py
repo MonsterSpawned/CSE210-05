@@ -1,12 +1,12 @@
 import os
 from os import sep, linesep
 
-from snake_wars.__main__ import Game
+import snake_wars.__main__
 
 class FSUtils():
     
     def get_cwd(self):
-        return os.path.abspath(Game)
+        return os.path.abspath(snake_wars.__main__)
     
     def get_os_path_sep(self):
         return sep

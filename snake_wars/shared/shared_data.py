@@ -16,6 +16,12 @@ class SharedData():
         self.game_fps = self.config_utils.get_cfg_string("game_fps")
         self.log_utils = LogUtils(self.game_name, self.log_level)
         
+        self.COLUMNS = 40
+        self.ROWS = 20
+        self.CELL_SIZE = 15
+        self.MAX_X = 900
+        self.MAX_Y = 600
+        
     def get_log_level(self):
         if self.config_utils.get_cfg_string("log_level") in ["DEBUG", "DBG"]: 
             self.log_level = Levels.DEBUG
