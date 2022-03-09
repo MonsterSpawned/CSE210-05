@@ -4,7 +4,7 @@ from pyray import Color
 from raylib import colors
 
 class Colors():
-    pass # List all color options here.
+    pass # TODO: List all color options here.
 
 class BaseColor():
     

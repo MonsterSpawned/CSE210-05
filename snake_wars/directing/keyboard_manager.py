@@ -17,7 +17,7 @@ class KeyboardManager():
         dx = 0
         dy = 0
         if player_num == 1:   
-            if pyray.is_key_down(pyray.KeyboardKey.KEY_LEFT):
+            if pyray.is_key_down(pyray.KEY_LEFT):
                 dx = -1
                 
             if pyray.is_key_down(pyray.KeyboardKey.KEY_RIGHT):
