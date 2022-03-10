@@ -1,4 +1,4 @@
-import constants
+from shared_data import SharedData
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
@@ -17,6 +17,7 @@ class HandleCollisionsAction(Action):
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
+        self._data = SharedData()
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -31,7 +32,7 @@ class HandleCollisionsAction(Action):
             self._handle_game_over(cast)
 
     def _handle_food_collision(self, cast):
-        """Updates the score nd moves the food if the snake collides with the food.
+        """Updates the score and moves the food if the snake collides with the food.
         
         Args:
             cast (Cast): The cast of Actors in the game.
@@ -71,9 +72,10 @@ class HandleCollisionsAction(Action):
             snake = cast.get_first_actor("snakes")
             segments = snake.get_segments()
             food = cast.get_first_actor("foods")
+            bomb = cast.get_first_actor("bombs")
 
-            x = int(constants.MAX_X / 2)
-            y = int(constants.MAX_Y / 2)
+            x = int(self._data.MAX_X / 2)
+            y = int(self._data.MAX_Y / 2)
             position = Point(x, y)
 
             message = Actor()
@@ -82,5 +84,6 @@ class HandleCollisionsAction(Action):
             cast.add_actor("messages", message)
 
             for segment in segments:
-                segment.set_color(constants.WHITE)
-            food.set_color(constants.WHITE)
+                segment.set_color(self._data.WHITE)
+            food.set_color(self._data.WHITE)
+            food.set_color(self._data.WHITE)

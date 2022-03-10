@@ -1,4 +1,4 @@
-import constants
+from shared_data import SharedData
 from game.shared.color import Color
 from game.shared.point import Point
 
@@ -19,6 +19,7 @@ class Actor:
 
     def __init__(self):
         """Constructs a new Actor."""
+        self._data = SharedData()
         self._text = ""
         self._font_size = 15
         self._color = Color(255, 255, 255)
@@ -73,8 +74,8 @@ class Actor:
             max_x (int): The maximum x value.
             max_y (int): The maximum y value.
         """
-        x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
-        y = (self._position.get_y() + self._velocity.get_y()) % constants.MAX_Y
+        x = (self._position.get_x() + self._velocity.get_x()) % self._data.MAX_X
+        y = (self._position.get_y() + self._velocity.get_y()) % self._data.MAX_Y
         self._position = Point(x, y)
 
     def set_color(self, color):

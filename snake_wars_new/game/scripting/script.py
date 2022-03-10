@@ -19,10 +19,10 @@ class Script:
             group (string): The name of the group.
             action (Action): The action to add.
         """
-        if not group in self._actions.keys():
+        if group not in self._actions.keys():
             self._actions[group] = []
-            
-        if not action in self._actions[group]:
+
+        if action not in self._actions[group]:
             self._actions[group].append(action)
 
     def get_actions(self, group):
@@ -34,10 +34,7 @@ class Script:
         Returns:
             List: The actions in the group.
         """
-        results = []
-        if group in self._actions.keys():
-            results = self._actions[group].copy()
-        return results
+        return self._actions[group].copy() if group in self._actions.keys() else []
     
     def remove_action(self, group, action):
         """Removes an action from the given group.

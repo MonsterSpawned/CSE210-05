@@ -1,4 +1,4 @@
-import constants
+from shared_data import SharedData
 
 from game.casting.cast import Cast
 from game.casting.food import Food
@@ -14,6 +14,7 @@ from game.services.keyboard_service import KeyboardService
 from game.services.video_service import VideoService
 from game.shared.color import Color
 from game.shared.point import Point
+from game.casting.bomb import Bomb
 
 
 def main():
@@ -21,7 +22,8 @@ def main():
     # create the cast
     cast = Cast()
     cast.add_actor("foods", Food())
-    cast.add_actor("snakes", Snake())
+    #cast.add_actor("scores", Bomb()) # TODO: #4 Implement bombs.
+    cast.add_actor("snakes", Snake()) # TODO: #3 Add player 2.
     cast.add_actor("scores", Score())
    
     # start the game

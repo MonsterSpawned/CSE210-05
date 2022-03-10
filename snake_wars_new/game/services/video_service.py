@@ -1,5 +1,5 @@
 import pyray
-import constants
+from shared_data import SharedData
 
 
 class VideoService:
@@ -14,6 +14,7 @@ class VideoService:
             debug (bool): whether or not to draw in debug mode.
         """
         self._debug = debug
+        self._data = SharedData(debug=self._debug)
 
     def close_window(self):
         """Closes the window and releases all computing resources."""
@@ -76,16 +77,16 @@ class VideoService:
         Args:
             title (string): The title of the window.
         """
-        pyray.init_window(constants.MAX_X, constants.MAX_Y, constants.CAPTION)
-        pyray.set_target_fps(constants.FRAME_RATE)
+        pyray.init_window(self._data.MAX_X, self._data.MAX_Y, self._data.CAPTION)
+        pyray.set_target_fps(self._data.FRAME_RATE)
 
     def _draw_grid(self):
         """Draws a grid on the screen."""
-        for y in range(0, constants.MAX_Y, constants.CELL_SIZE):
-            pyray.draw_line(0, y, constants.MAX_X, y, pyray.GRAY)
+        for y in range(0, self._data.MAX_Y, self._data.CELL_SIZE):
+            pyray.draw_line(0, y, self._data.MAX_X, y, pyray.GRAY)
             
-        for x in range(0, constants.MAX_X, constants.CELL_SIZE):
-            pyray.draw_line(x, 0, x, constants.MAX_Y, pyray.GRAY)
+        for x in range(0, self._data.MAX_X, self._data.CELL_SIZE):
+            pyray.draw_line(x, 0, x, self._data.MAX_Y, pyray.GRAY)
     
     def _get_x_offset(self, text, font_size):
         width = pyray.measure_text(text, font_size)

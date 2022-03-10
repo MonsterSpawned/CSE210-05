@@ -1,4 +1,4 @@
-import constants
+from shared_data import SharedData
 from game.scripting.action import Action
 from game.shared.point import Point
 
@@ -19,8 +19,9 @@ class ControlActorsAction(Action):
         Args:
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
+        self._data = SharedData()
         self._keyboard_service = keyboard_service
-        self._direction = Point(constants.CELL_SIZE, 0)
+        self._direction = Point(self._data.CELL_SIZE, 0)
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -31,19 +32,19 @@ class ControlActorsAction(Action):
         """
         # left
         if self._keyboard_service.is_key_down('a'):
-            self._direction = Point(-constants.CELL_SIZE, 0)
+            self._direction = Point(-self._data.CELL_SIZE, 0)
         
         # right
         if self._keyboard_service.is_key_down('d'):
-            self._direction = Point(constants.CELL_SIZE, 0)
+            self._direction = Point(self._data.CELL_SIZE, 0)
         
         # up
         if self._keyboard_service.is_key_down('w'):
-            self._direction = Point(0, -constants.CELL_SIZE)
+            self._direction = Point(0, -self._data.CELL_SIZE)
         
         # down
         if self._keyboard_service.is_key_down('s'):
-            self._direction = Point(0, constants.CELL_SIZE)
+            self._direction = Point(0, self._data.CELL_SIZE)
         
         snake = cast.get_first_actor("snakes")
         snake.turn_head(self._direction)

@@ -7,14 +7,19 @@ from snake_wars.utils.cfg_utils import ConfigUtils
 # Do score managing and other miscellaneous shared functions in here...
 class SharedData():
     
-    def __init__(self):
+    def __init__(self, debug: bool = False):
         self.config_utils = ConfigUtils()
+        self.fs_utils = FSUtils()
+        self.log_utils = LogUtils(self.game_name, self.log_level)
+        self._debug = debug
         
         self.game_name = self.config_utils.get_cfg_string("game_name")
         self.game_name = self.config_utils.get_cfg_int("window_width")
         self.game_name = self.config_utils.get_cfg_int("window_height")
         self.game_fps = self.config_utils.get_cfg_string("game_fps")
-        self.log_utils = LogUtils(self.game_name, self.log_level)
+        self.root_dir = self.fs_utils.get_cwd()
+        self.path_sep = self.fs_utils.get_os_path_sep()
+        self.line_sep = self.fs_utils.get_os_linesep()      
         
         self.COLUMNS = 40
         self.ROWS = 20

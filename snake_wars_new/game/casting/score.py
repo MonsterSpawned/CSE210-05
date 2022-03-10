@@ -1,5 +1,5 @@
 from game.casting.actor import Actor
-
+from shared_data import SharedData
 
 class Score(Actor):
     """
@@ -14,6 +14,7 @@ class Score(Actor):
     """
     def __init__(self):
         super().__init__()
+        self._data = SharedData()
         self._points = 0
         self.add_points(0)
 
