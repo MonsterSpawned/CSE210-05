@@ -1,9 +1,9 @@
 # An optional class. We may or may not use it. Would be a "fun addition," if we have the time.
-import distro
+import distro # To be used in future games... :)
 from platform import system, release, version
 
 class SoundManager():
-    # Play sounds, import sounds, etc. on multiple OSes.
+    # Play sounds, imports sounds, etc. on multiple OSes.
 
     def __init__(self):
         print(f"Current OS: {system} {release} (v{version})")

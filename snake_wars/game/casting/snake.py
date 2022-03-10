@@ -47,10 +47,12 @@ class Snake(Actor):
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
-            if self._player_num == 1:
-                segment.set_color(self._data.BLUE)
-            else:
-                segment.set_color(self._data.PURPLE)
+            # TODO: #5 Use the below code (or pseudo-code) to change the player's color based on the player #:
+            # if self._player_num == 1:
+            #     segment.set_color(self._data.BLUE)
+            # else:
+            #     segment.set_color(self._data.PURPLE)
+            segment.set_color(self._data.BLUE)
             self._segments.append(segment)
 
     def turn_head(self, velocity):

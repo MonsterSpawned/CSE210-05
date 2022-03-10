@@ -2,6 +2,7 @@ from shared_data import SharedData
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
+from game.services.sound_manager import SoundManager
 
 class HandleCollisionsAction(Action):
     """
@@ -18,6 +19,7 @@ class HandleCollisionsAction(Action):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
         self._data = SharedData()
+        self._snd_mgr = SoundManager()
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -44,6 +46,7 @@ class HandleCollisionsAction(Action):
 
         if head.get_position().equals(food.get_position()):
             points = food.get_points()
+            self._snd_mgr.play_sound(f'{self._data.fs_utils.get_cwd()}{self._data.fs_utils.get_os_path_sep()}data{self._data.fs_utils.get_os_path_sep()}sounds{self._data.fs_utils.get_os_path_sep()}1-up.wav')
             snake.grow_tail(points)
             score.add_points(points)
             food.reset()
@@ -72,7 +75,6 @@ class HandleCollisionsAction(Action):
             snake = cast.get_first_actor("snakes")
             segments = snake.get_segments()
             food = cast.get_first_actor("foods")
-            bomb = cast.get_first_actor("bombs")
 
             x = int(self._data.MAX_X / 2)
             y = int(self._data.MAX_Y / 2)
@@ -86,4 +88,5 @@ class HandleCollisionsAction(Action):
             for segment in segments:
                 segment.set_color(self._data.WHITE)
             food.set_color(self._data.WHITE)
-            food.set_color(self._data.WHITE)
+            self._snd_mgr.play_sound(f'{self._data.fs_utils.get_cwd()}{self._data.fs_utils.get_os_path_sep()}data{self._data.fs_utils.get_os_path_sep()}sounds{self._data.fs_utils.get_os_path_sep()}game-over.wav')
+            
