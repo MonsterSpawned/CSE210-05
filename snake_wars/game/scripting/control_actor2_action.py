@@ -3,7 +3,7 @@ from game.scripting.action import Action
 from game.shared.point import Point
 
 
-class ControlActorsAction(Action):
+class ControlActor2Action(Action):
     """
     An input action that controls the snake that starts on the left.
     
@@ -31,20 +31,20 @@ class ControlActorsAction(Action):
             script (Script): The script of Actions in the game.
         """
         # left
-        if self._keyboard_service.is_key_down('a'):
+        if self._keyboard_service.is_key_down('left'):
             self._direction = Point(-self._data.CELL_SIZE, 0)
         
         # right
-        if self._keyboard_service.is_key_down('d'):
+        if self._keyboard_service.is_key_down('right'):
             self._direction = Point(self._data.CELL_SIZE, 0)
         
         # up
-        if self._keyboard_service.is_key_down('w'):
+        if self._keyboard_service.is_key_down('up'):
             self._direction = Point(0, -self._data.CELL_SIZE)
         
         # down
-        if self._keyboard_service.is_key_down('s'):
+        if self._keyboard_service.is_key_down('down'):
             self._direction = Point(0, self._data.CELL_SIZE)
         
-        snake = cast.get_first_actor("snakes")
+        snake = cast.get_second_actor("snakes")
         snake.turn_head(self._direction)
