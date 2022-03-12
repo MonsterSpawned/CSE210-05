@@ -53,24 +53,25 @@ class HandleCollisionsAction1(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        if self._is_game_over:
-            snake1 = cast.get_first_actor("snake1")
-            snake2 = cast.get_first_actor("snake2")
-            segment1 = snake1.get_segments()
-            segment2 = snake2.get_segments()
+        if not self._is_game_over:
+            return
+        snake1 = cast.get_first_actor("snake1")
+        snake2 = cast.get_first_actor("snake2")
+        segment1 = snake1.get_segments()
+        segment2 = snake2.get_segments()
 
-            x = int(self._data.MAX_X / 2)
-            y = int(self._data.MAX_Y / 2)
-            position = Point(x, y)
+        x = int(self._data.MAX_X / 2)
+        y = int(self._data.MAX_Y / 2)
+        position = Point(x, y)
 
-            message = Actor()
-            message.set_text("Game Over!")
-            message.set_position(position)
-            cast.add_actor("messages", message)
-            self._data.log_utils.log_msg("Game over.", Levels.INFO)
-            if self._snd_mgr.sound_playing == False:
-                self._snd_mgr.play_sound(f'{self._data.fs_utils.get_cwd()}{self._data.fs_utils.get_os_path_sep()}data{self._data.fs_utils.get_os_path_sep()}sounds{self._data.fs_utils.get_os_path_sep()}game-over.wav')
-            for segment in segment1:
-                segment.set_color(self._data.WHITE)
-            for segment in segment2:
-                segment.set_color(self._data.WHITE)
+        message = Actor()
+        message.set_text("Game Over!")
+        message.set_position(position)
+        cast.add_actor("messages", message)
+        self._data.log_utils.log_msg("Game over.", Levels.INFO)
+        if self._snd_mgr.sound_playing == False:
+            self._snd_mgr.play_sound(f'{self._data.fs_utils.get_cwd()}{self._data.fs_utils.get_os_path_sep()}data{self._data.fs_utils.get_os_path_sep()}sounds{self._data.fs_utils.get_os_path_sep()}game-over.wav')
+        for segment in segment1:
+            segment.set_color(self._data.WHITE)
+        for segment in segment2:
+            segment.set_color(self._data.WHITE)
