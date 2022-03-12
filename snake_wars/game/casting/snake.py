@@ -59,7 +59,7 @@ class Snake(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        x = int(self._data.MAX_X / 2)
+        x = int(self._data.MAX_X / 4)
         y = int(self._data.MAX_Y / 2)
 
         for i in range(self._data.SNAKE_LENGTH):
