@@ -1,5 +1,5 @@
 # An optional class. We may or may not use it. Would be a "fun addition," if we have the time.
-import distro # To be used in future games... :)
+# import distro # TODO: To be used in future games... :)
 from platform import system, release, version
 from log21 import Levels
 
