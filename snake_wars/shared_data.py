@@ -10,11 +10,10 @@ class SharedData():
     
     def __init__(self, debug: bool = False):
         self.log_level = Levels.INFO
-        
         self.config_utils = ConfigUtils()
         self.fs_utils = FSUtils()
         self._debug = debug
-        
+        self.sound_playing = False
         self.CAPTION = self.config_utils.get_cfg_string("game_name")
         self.log_utils = LogUtils(self.CAPTION, self.log_level)
         self.MAX_X = self.config_utils.get_cfg_int("window_width")

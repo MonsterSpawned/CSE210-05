@@ -5,7 +5,7 @@ from game.shared.point import Point
 from game.services.sound_manager import SoundManager
 from log21 import Levels
 
-class HandleCollisionsAction1(Action):
+class HandleCollisionsAction2(Action):
     """
     An update action that handles interactions between the actors.
     
@@ -39,7 +39,7 @@ class HandleCollisionsAction1(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        snake = cast.get_first_actor("snake1")
+        snake = cast.get_first_actor("snake2")
         head = snake.get_segments()[0]
         segments = snake.get_segments()[1:]
         
