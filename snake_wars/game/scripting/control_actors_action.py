@@ -5,7 +5,7 @@ from game.shared.point import Point
 
 class ControlActorsAction(Action):
     """
-    An input action that controls the snake.
+    An input action that controls the snake that starts on the left.
     
     The responsibility of ControlActorsAction is to get the direction and move the snake's head.
 
@@ -21,7 +21,7 @@ class ControlActorsAction(Action):
         """
         self._data = SharedData()
         self._keyboard_service = keyboard_service
-        self._direction = Point(self._data.CELL_SIZE, 0)
+        self._direction = Point(0, self._data.CELL_SIZE)
 
     def execute(self, cast, script):
         """Executes the control actors action.
