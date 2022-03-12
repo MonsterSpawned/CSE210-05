@@ -8,10 +8,12 @@ from shared_data import SharedData
 class SoundManager():
     # Play sounds, imports sounds, etc. on multiple OSes.
 
+    # Initialize the class:
     def __init__(self):
         print(f"Current OS: {system} {release} (v{version})")
         self._data = SharedData()
     
+    # Play a sound:
     def play_sound(self, path: str):
         if system() == "Windows":
             import winsound
