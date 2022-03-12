@@ -70,5 +70,4 @@ class HandleCollisionsAction(Action):
 
             for segment in segments:
                 segment.set_color(self._data.WHITE)
-            food.set_color(self._data.WHITE)
             self._snd_mgr.play_sound(f'{self._data.fs_utils.get_cwd()}{self._data.fs_utils.get_os_path_sep()}data{self._data.fs_utils.get_os_path_sep()}sounds{self._data.fs_utils.get_os_path_sep()}game-over.wav')
