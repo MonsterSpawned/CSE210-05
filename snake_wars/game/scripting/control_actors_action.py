@@ -21,7 +21,7 @@ class ControlActorsAction(Action):
         """
         self._data = SharedData()
         self._keyboard_service = keyboard_service
-        self._direction = Point(0, self._data.CELL_SIZE)
+        self._direction = Point(0, -self._data.CELL_SIZE)
 
     def execute(self, cast, script):
         """Executes the control actors action.
