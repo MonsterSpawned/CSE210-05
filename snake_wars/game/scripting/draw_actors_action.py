@@ -1,5 +1,7 @@
+from multiprocessing.shared_memory import ShareableList
 from game.scripting.action import Action
-
+from log21 import Levels
+from shared_data import SharedData
 
 class DrawActorsAction(Action):
     """
@@ -18,6 +20,7 @@ class DrawActorsAction(Action):
             video_service (VideoService): An instance of VideoService.
         """
         self._video_service = video_service
+        self._data = SharedData()
 
     def execute(self, cast, script):
         """Executes the draw actors action.
@@ -38,3 +41,4 @@ class DrawActorsAction(Action):
         self._video_service.draw_actor(score)
         self._video_service.draw_actors(messages, True)
         self._video_service.flush_buffer()
+        self._data.log_utils.log_msg("Drew actors.", Levels.DEBUG)

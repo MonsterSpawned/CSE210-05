@@ -1,6 +1,6 @@
 import pyray
 from shared_data import SharedData
-
+from log21 import Levels
 
 class VideoService:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state 
@@ -19,6 +19,7 @@ class VideoService:
     def close_window(self):
         """Closes the window and releases all computing resources."""
         pyray.close_window()
+        self._data.log_utils.log_msg("Closed window...", Levels.DEBUG)
 
     def clear_buffer(self):
         """Clears the buffer in preparation for the next rendering. This method should be called at
@@ -79,6 +80,7 @@ class VideoService:
         """
         pyray.init_window(self._data.MAX_X, self._data.MAX_Y, self._data.CAPTION)
         pyray.set_target_fps(self._data.FRAME_RATE)
+        self._data.log_utils.log_msg("Opening window...", Levels.DEBUG)
 
     def _draw_grid(self):
         """Draws a grid on the screen."""
@@ -87,7 +89,8 @@ class VideoService:
             
         for x in range(0, self._data.MAX_X, self._data.CELL_SIZE):
             pyray.draw_line(x, 0, x, self._data.MAX_Y, pyray.GRAY)
-    
+        self._data.log_utils.log_msg("Drew level grid.", Levels.DEBUG)
+        
     def _get_x_offset(self, text, font_size):
         width = pyray.measure_text(text, font_size)
         return int(width / 2)

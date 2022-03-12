@@ -3,6 +3,7 @@ from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
 from game.services.sound_manager import SoundManager
+from log21 import Levels
 
 class HandleCollisionsAction(Action):
     """
@@ -47,6 +48,7 @@ class HandleCollisionsAction(Action):
         if head.get_position().equals(food.get_position()):
             points = food.get_points()
             self._snd_mgr.play_sound(f'{self._data.fs_utils.get_cwd()}{self._data.fs_utils.get_os_path_sep()}data{self._data.fs_utils.get_os_path_sep()}sounds{self._data.fs_utils.get_os_path_sep()}1-up.wav')
+            self._data.log_utils.log_msg("Played sound '1-up.wav'.", Levels.DEBUG)
             snake.grow_tail(points)
             score.add_points(points)
             food.reset()
@@ -84,9 +86,9 @@ class HandleCollisionsAction(Action):
             message.set_text("Game Over!")
             message.set_position(position)
             cast.add_actor("messages", message)
+            self._data.log_utils.log_msg("Game over.", Levels.INFO)
 
             for segment in segments:
                 segment.set_color(self._data.WHITE)
             food.set_color(self._data.WHITE)
             self._snd_mgr.play_sound(f'{self._data.fs_utils.get_cwd()}{self._data.fs_utils.get_os_path_sep()}data{self._data.fs_utils.get_os_path_sep()}sounds{self._data.fs_utils.get_os_path_sep()}game-over.wav')
-            

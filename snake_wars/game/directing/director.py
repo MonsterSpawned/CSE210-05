@@ -1,3 +1,6 @@
+from shared_data import SharedData
+from log21 import Levels
+
 class Director:
     """A person who directs the game. 
     
@@ -14,6 +17,8 @@ class Director:
             video_service (VideoService): An instance of VideoService.
         """
         self._video_service = video_service
+        self._data = SharedData()
+        self._data.log_utils.log_msg("Loading game...", Levels.INFO)
         
     def start_game(self, cast, script):
         """Starts the game using the given cast and script. Runs the main game loop.
@@ -27,7 +32,7 @@ class Director:
             self._execute_actions("input", cast, script)
             self._execute_actions("update", cast, script)
             self._execute_actions("output", cast, script)
-        self._video_service.close_window()
+        self._video_service.close_window() 
 
     def _execute_actions(self, group, cast, script):
         """Calls execute for each action in the given group.

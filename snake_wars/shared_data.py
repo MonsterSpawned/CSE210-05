@@ -35,6 +35,7 @@ class SharedData():
         self.PURPLE = Color(170, 0, 255) # Player 2
         self.YELLOW = Color(255, 255, 0)
         self.GREEN = Color(0, 255, 0)
+        self.log_utils.log_msg("Done loading shared data.", Levels.DEBUG)
         
     def get_log_level(self):
         if self.config_utils.get_cfg_string("log_level") in ["DEBUG", "DBG"]: 

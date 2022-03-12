@@ -12,7 +12,8 @@ class ConfigUtils():
             "game_name": "Snake Wars",
             "window_width": 1080,
             "window_height": 720,
-            "game_fps": 15
+            "game_fps": 15,
+            "log_level": "DEBUG"
         }
         cwd = self.fs_utils.get_cwd()
         sep = self.fs_utils.get_os_path_sep()
@@ -32,6 +33,7 @@ class ConfigUtils():
                     self.configuration.set("GAME", "window_width", "1080")
                     self.configuration.set("GAME", "window_height", "720")
                     self.configuration.set("GAME", "game_fps", "15")
+                    self.configuration.set("GAME", "log_level", "INFO")
                     self.configuration.write(output_file)
             except OSError as error:
                 print(error)
