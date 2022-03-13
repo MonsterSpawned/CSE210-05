@@ -60,10 +60,10 @@ class Snake(Actor):
     
     def _prepare_body(self):
         if self._player_num == 1:
-            x = int(self._data.MAX_X / 10)
+            x = int(self._data.MAX_X / 3)
             y = int(self._data.MAX_Y / 2)
         elif self._player_num == 2:
-            x = int(self._data.MAX_X / 5)
+            x = int(self._data.MAX_X / 1.75)
             y = int(self._data.MAX_Y / 2)
 
         for i in range(self._data.SNAKE_LENGTH):
